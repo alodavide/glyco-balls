@@ -176,7 +176,6 @@
                   return 'translate(' + d.x + ',' + d.y + ')';
                 })
                 .attr('r', function (d) {
-                  //console.log("dr", d.r)
                   return d.r;
                 })
                 .style("fill", function (d) {
@@ -200,7 +199,6 @@
                 .attr("class", "legend")
                 .attr("transform", "translate(0,10)")
                 .selectAll("g")
-                //console.log(nodes.group())
                 .data(nodes)
                 .enter()
                 .append("g")
@@ -232,7 +230,6 @@
                 })
                 .attr('stroke-width', 0.5)
                 .attr('r', function (d) {
-                  //console.log("dr", d.r)
                   return d.r;
                 })
                 .ease('sine');
