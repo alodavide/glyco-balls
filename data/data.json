@@ -111,11 +111,11 @@
       "size": 0.8
    }]
 }, {
-   "label": "Histdine-rich glycoprotein",
+   "label": "Histdine-rich_glycoprotein",
    "value": "0.125",
    "children": [{
-      "name": "Description of Histdine-rich glycoprotein",
-      "group": "Histdine-rich glycoprotein",
+      "name": "Description of Histdine-rich_glycoprotein",
+      "group": "Histdine-rich_glycoprotein",
       "size": 0.125
    }]
 }, {
@@ -127,11 +127,11 @@
       "size": 0.0725
    }]
 }, {
-   "label": "Seroransferrin",
+   "label": "Serotransferrin",
    "value": "2.5",
    "children": [{
-      "name": "Description of Seroransferrin",
-      "group": "Seroransferrin",
+      "name": "Description of Serotransferrin",
+      "group": "Serotransferrin",
       "size": 2.5
    }]
 }, {
