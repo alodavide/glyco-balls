@@ -4,6 +4,7 @@
    "children": [{
       "name": "Description of Alpha-1-acid glycoprotein",
       "group": "Alpha-1-acid glycoprotein",
+      "id": 14,
       "size": 0.77
    }]
 }, {
@@ -12,6 +13,7 @@
    "children": [{
       "name": "Description of Alpha-1-antitrypsin",
       "group": "Alpha-1-antitrypsin",
+      "id": 20,
       "size": 1.1
    }]
 }, {
@@ -20,6 +22,7 @@
    "children": [{
       "name": "Description of Alpha-1B-glycoprotein",
       "group": "Alpha-1B-glycoprotein",
+      "id": 780,
       "size": 0.22
    }]
 }, {
@@ -28,6 +31,7 @@
    "children": [{
       "name": "Description of Alpha-2-HS-glycoprotein",
       "group": "Alpha-2-HS-glycoprotein",
+      "id": 23,
       "size": 0.45
    }]
 }, {
@@ -36,6 +40,7 @@
    "children": [{
       "name": "Description of Alpha-2-macrogobulin",
       "group": "Alpha-2-macrogobulin",
+      "id": 730,
       "size": 1.2
    }]
 }, {
@@ -44,6 +49,7 @@
    "children": [{
       "name": "Description of Antithrombin-III",
       "group": "Antithrombin-III",
+      "id": 766,
       "size": 0.15
    }]
 }, {
@@ -52,6 +58,7 @@
    "children": [{
       "name": "Description of Apolipoprotein B-100",
       "group": "Apolipoprotein B-100",
+      "id": 57,
       "size": 0.5
    }]
 }, {
@@ -60,6 +67,7 @@
    "children": [{
       "name": "Description of Apolipoprotein D",
       "group": "Apolipoprotein D",
+      "id": 677,
       "size": 0.1
    }]
 }, {
@@ -68,6 +76,7 @@
    "children": [{
       "name": "Description of Apolipoprotein F",
       "group": "Apolipoprotein F",
+      "id": 702,
       "size": 0.0845
    }]
 }, {
@@ -76,6 +85,7 @@
    "children": [{
       "name": "Description of Beta-2-glycoprotein 1",
       "group": "Beta-2-glycoprotein 1",
+      "id": 678,
       "size": 0.2
    }]
 }, {
@@ -84,6 +94,7 @@
    "children": [{
       "name": "Description of Ceruloplasmin",
       "group": "Ceruloplasmin",
+      "id": 85,
       "size": 0.355
    }]
 }, {
@@ -92,6 +103,7 @@
    "children": [{
       "name": "Description of Fibrinogen",
       "group": "Fibrinogen",
+      "id": 157,
       "size": 3
    }]
 }, {
@@ -100,6 +112,7 @@
    "children": [{
       "name": "Description of Haptoglobin",
       "group": "Haptoglobin",
+      "id": 744,
       "size": 1.32
    }]
 }, {
@@ -108,6 +121,7 @@
    "children": [{
       "name": "Description of Hemopexin",
       "group": "Hemopexin",
+      "id": 757,
       "size": 0.8
    }]
 }, {
@@ -116,6 +130,7 @@
    "children": [{
       "name": "Description of Histdine-rich_glycoprotein",
       "group": "Histdine-rich_glycoprotein",
+      "id": 805,
       "size": 0.125
    }]
 }, {
@@ -124,6 +139,7 @@
    "children": [{
       "name": "Description of Kininogen-1",
       "group": "Kininogen-1",
+      "id": 810,
       "size": 0.0725
    }]
 }, {
@@ -132,6 +148,7 @@
    "children": [{
       "name": "Description of Serotransferrin",
       "group": "Serotransferrin",
+      "id": 558,
       "size": 2.5
    }]
 }, {
@@ -140,6 +157,7 @@
    "children": [{
       "name": "Description of Vitronectin",
       "group": "Vitronectin",
+      "id": 625,
       "size": 0.3
    }]
 }, {
@@ -148,6 +166,7 @@
    "children": [{
       "name": "Description of Zinc-alpha-2-glycoprotein",
       "group": "Zinc-alpha-2-glycoprotein",
+      "id": 692,
       "size": 0.05
    }]
 }, {
@@ -156,6 +175,7 @@
    "children": [{
       "name": "Description of Immunoglobulin A",
       "group": "Immunoglobulin A",
+      "id": 227,
       "size": 2.62
    }]
 }, {
@@ -172,6 +192,7 @@
    "children": [{
       "name": "Description of Immunoglobulin E",
       "group": "Immunoglobulin E",
+      "id": 232,
       "size": 0.0003
    }]
 }, {
@@ -180,6 +201,7 @@
    "children": [{
       "name": "Description of Immunoglobulin G",
       "group": "Immunoglobulin G",
+      "id": 233,
       "size": 11.8
    }]
 }, {
@@ -188,6 +210,7 @@
    "children": [{
       "name": "Description of Immunoglobulin M",
       "group": "Immunoglobulin M",
+      "id": 278,
       "size": 1.47
    }]
 }]

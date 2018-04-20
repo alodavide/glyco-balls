@@ -218,6 +218,16 @@
                   return d.depth * 10 + 10;
                 })
                 .attr("dy", "0.50em")
+                .attr("cursor", "pointer")
+                .on('mouseover', function (d) {
+                  d3.select(this).style("fill", "steelblue");
+                })
+                .on('mouseout', function (d) {
+                  d3.select(this).style("fill", "black");
+                })
+                .on('click', function(d){
+                  window.open('https://glyconnect.expasy.org/browser/proteins/'+d.id, '_blank');
+                })
                 .text(function (d) {
                   return d.group;
                 });
