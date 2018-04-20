@@ -15,7 +15,6 @@
 
         <iron-ajax
                 id="jsonLoad"
-                url="../data/data.json"
                 handle-as="json"
                 on-response="loadVisualization"
                 debounce-duration="300">
@@ -47,7 +46,7 @@
         connectedCallback() {
           super.connectedCallback();
           var ajaxCall = this.$.jsonLoad;
-          ajaxCall.url = this.resolveUrl('data/data.json');
+          ajaxCall.url = this.resolveUrl('data/proteinData.json');
           ajaxCall.generateRequest();
         }
 
@@ -220,13 +219,19 @@
                 .attr("dy", "0.50em")
                 .attr("cursor", "pointer")
                 .on('mouseover', function (d) {
-                  d3.select(this).style("fill", "steelblue");
+                  if(d.id){
+                    d3.select(this).style("fill", "steelblue");
+                  }
                 })
                 .on('mouseout', function (d) {
-                  d3.select(this).style("fill", "black");
+                  if(d.id){
+                    d3.select(this).style("fill", "black");
+                  }
                 })
                 .on('click', function(d){
-                  window.open('https://glyconnect.expasy.org/browser/proteins/'+d.id, '_blank');
+                  if(d.id) {
+                    window.open('https://glyconnect.expasy.org/browser/proteins/' + d.id, '_blank');
+                  }
                 })
                 .text(function (d) {
                   return d.group;
