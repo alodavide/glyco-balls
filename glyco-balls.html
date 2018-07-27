@@ -55,15 +55,15 @@
           var graph = this.$.graph;
           var that = this;
 
-          var width = 800,
-              height = 800,
+          var width = 400,
+              height = 350,
               radius = Math.min(width, height) / 2; //Radius of the whole circle
 
 
           var svg = d3.select(graph)
               .append("svg")
               .attr("width", width + 300)
-              .attr("height", height + 150);
+              .attr("height", height + 300);
 
           var tooltip = d3.select("body")
               .append("div")
@@ -91,12 +91,12 @@
 
 
           //_create bubble
-          var diameter = width / 2; //take half/width
+          var diameter = width ; //take half/width
 
           var bubs = svg.append("g")
               .attr("class", "bubs");
 
-          bubs.attr("transform", "translate(" + diameter / 6 + "," + diameter / 6 + ")");
+          bubs.attr("transform", "translate(50,50)");
 
           var bubble = d3.layout.pack()
               .size([diameter, diameter])
