@@ -36,6 +36,38 @@
     "id": 757,
     "size": 0.8
   }]
+}, {
+  "class": "Immunity",
+  "elements": [{
+    "label": "Immunoglobulin A",
+    "value": "2.62",
+    "id": 227,
+    "size": 2.62
+  }, {
+    "label": "Immunoglobulin D",
+    "value": "0.035",
+    "size": 0.035
+  }, {
+    "label": "Immunoglobulin E",
+    "value": "0.0003",
+    "size": 0.0003
+  }, {
+    "label": "Immunoglobulin G",
+    "value": "11.8",
+    "id": 233,
+    "size": 11.8
+  }, {
+    "label": "Immunoglobulin M",
+    "value": "1.47",
+    "id": 278,
+    "size": 1.47
+  },{
+    "label": "Haptoglobin",
+    "value": "1.32",
+    "id": 744,
+    "size": 1.32
+
+  }]
 },{
   "class": "Hemostasis",
   "elements": [{
@@ -84,7 +116,7 @@
     "id": 810,
     "size": 0.0725
   }]
-}, {
+},{
   "class": "Cell Adhesion",
   "elements": [{
     "label": "Vitronectin",
@@ -96,38 +128,6 @@
     "value": "0.05",
     "id": 692,
     "size": 0.05
-  }]
-}, {
-  "class": "Immunity",
-  "elements": [{
-    "label": "Immunoglobulin A",
-    "value": "2.62",
-    "id": 227,
-    "size": 2.62
-  }, {
-    "label": "Immunoglobulin D",
-    "value": "0.035",
-    "size": 0.035
-  }, {
-    "label": "Immunoglobulin E",
-    "value": "0.0003",
-    "size": 0.0003
-  }, {
-    "label": "Immunoglobulin G",
-    "value": "11.8",
-    "id": 233,
-    "size": 11.8
-  }, {
-    "label": "Immunoglobulin M",
-    "value": "1.47",
-    "id": 278,
-    "size": 1.47
-  },{
-    "label": "Haptoglobin",
-    "value": "1.32",
-    "id": 744,
-    "size": 1.32
-
   }]
 }]
 
