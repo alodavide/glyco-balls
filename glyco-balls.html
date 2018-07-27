@@ -46,7 +46,7 @@
         connectedCallback() {
           super.connectedCallback();
           var ajaxCall = this.$.jsonLoad;
-          ajaxCall.url = this.resolveUrl('data/proteinData.json');
+          ajaxCall.url = this.resolveUrl('data/proteinDataClass.json');
           ajaxCall.generateRequest();
         }
 
@@ -55,8 +55,8 @@
           var graph = this.$.graph;
           var that = this;
 
-          var width = 450,
-              height = 450,
+          var width = 800,
+              height = 800,
               radius = Math.min(width, height) / 2; //Radius of the whole circle
 
 
@@ -80,29 +80,10 @@
           //_create doughpie shell
           var doughpie = svg.append("g")
               .attr("class", "doughpie");
-
-          doughpie.append("g")
-              .attr("class", "slices");
           doughpie.append("g")
               .attr("class", "labels");
           doughpie.append("g")
               .attr("class", "lines");
-
-          var pie = d3.layout.pie()
-              .sort(null)
-              .value(function (d) {
-                return d.value;
-              });
-
-          var arc = d3.svg.arc()
-              .outerRadius(radius * 0.90) //size of the radius of the outer circle
-              .innerRadius(radius * 0.87);
-
-          doughpie.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-          var key = function (d) {
-            return d.data.label;
-          };
 
           //this may be useful: http://bl.ocks.org/jfreyre/b1882159636cc9e1283a
           var color = d3.scale.ordinal()
@@ -115,7 +96,7 @@
           var bubs = svg.append("g")
               .attr("class", "bubs");
 
-          bubs.attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+          bubs.attr("transform", "translate(" + diameter / 6 + "," + diameter / 6 + ")");
 
           var bubble = d3.layout.pack()
               .size([diameter, diameter])
@@ -124,47 +105,23 @@
               })
               .padding(3);
 
-
           change(data);
 
           function change(data) {
-              /* ------- ANIMATE PIE SLICES -------*/
+              /* ------- Remove legend -------*/
+              var dataNodes = [];
+              for(var i = 0 ; i< data.length; i++){
+                dataNodes = dataNodes.concat(data[i].elements);
 
-              var slice = doughpie.select(".slices").selectAll("path.slice")
-                .data(pie(data), key);
+              }
 
-
-            slice.enter()
-                .insert("path")
-                .style("fill", function (d) {
-                  return color(d.data.label); //colors
-                })
-                .attr("class", "slice");
-
-
-            slice
-                .transition().duration(1000)
-                .attrTween("d", function (d) {
-                  this._current = this._current || d;
-                  var interpolate = d3.interpolate(this._current, d);
-                  this._current = interpolate(0);
-                  return function (t) {
-                    return arc(interpolate(t));
-                  };
-                });
-
-            slice.exit()
-                .remove();
-            /* ------- ANIMATE BUBBLES -------*/
+              /* ------- ANIMATE BUBBLES -------*/
             // generate data with calculated layout values
 
-            var data = bubbledata(data);
-
-            var nodes = bubble.nodes(data)
+            var nodes = bubble.nodes({"children":dataNodes})
                 .filter(function (d) {
                   return !d.children;
                 }); // filter out the outer bubble
-
 
             var bubbles = bubs.selectAll('circle')
                 .data(nodes);
@@ -172,71 +129,85 @@
             bubbles.enter()
                 .insert("circle")
                 .attr('transform', function (d) {
-                  return 'translate(' + d.x + ',' + d.y + ')';
+                  return 'translate(' + d.x + ',' + d.y  + ')';
                 })
                 .attr('r', function (d) {
                   return d.r;
                 })
                 .style("fill", function (d) {
-                  return color(d.group);
+                  return color(d.label);
                 })
                 .on("mouseover", function (d) {
-                  tooltip.text(d.group + ": " + d.value.toPrecision(2).toString() + " mg/ml");
+                  tooltip.text(d.label + ": " + d.value.toPrecision(2).toString() + " mg/ml");
                   tooltip.style("visibility", "visible");
                 })
                 .on("mousemove", function () {
                   return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
                 })
                 .on("click", function (d) {
-                  that.selectedProtein = d.group.replace(/ /g,"_");
+                  that.selectedProtein = d.label.replace(/ /g,"_");
                 })
                 .on("mouseout", function () {
                   return tooltip.style("visibility", "hidden");
                 });
+            var posCounter = 1;
+            for(var count = 0 ; count< data.length; count++) {
 
-            var legend = svg.append("g")
-                .attr("class", "legend")
-                .attr("transform", "translate(0,10)")
-                .selectAll("g")
-                .data(nodes)
-                .enter()
-                .append("g")
-                .attr("transform", function (d, i) {
-                  return "translate(" + d.depth * 500 + "," + i * 20 + ")";
-                });
-            // Draw rects, and color them by original_index
-            legend.append("rect")
-                .attr("width", 8)
-                .attr("height", 8)
-                .style("fill", function (d) {
-                  return color(d.group)
-                });
+              var title = svg.append("text")
+                  .attr("class", "title")
+                  .attr("transform", "translate(500,"+(8+ posCounter*22)+")")
+                  .style("font-weight","bold")
+                  .text(
+                      function(){
+                        return data[count].class;
+                      }
+                  )
+              ;
+              posCounter++;
+              var legend = svg.append("g")
+                  .attr("class", "legend")
+                  .selectAll("g")
+                  .data(data[count].elements)
+                  .enter()
+                  .append("g")
+                  .attr("transform", function (d, i) {
+                    return "translate(" + d.depth * 500 + "," + (posCounter*2+(posCounter + i) * 20) + ")";
+                  });
+              posCounter = posCounter+data[count].elements.length;
 
-            legend.append("text")
-                .attr("x", function (d, i) {
-                  return d.depth * 10 + 10;
-                })
-                .attr("dy", "0.50em")
-                .attr("cursor", "pointer")
-                .on('mouseover', function (d) {
-                  if(d.id){
-                    d3.select(this).style("fill", "steelblue");
-                  }
-                })
-                .on('mouseout', function (d) {
-                  if(d.id){
-                    d3.select(this).style("fill", "black");
-                  }
-                })
-                .on('click', function(d){
-                  if(d.id) {
-                    window.open('https://glyconnect.expasy.org/browser/proteins/' + d.id, '_blank');
-                  }
-                })
-                .text(function (d) {
-                  return d.group;
-                });
+              // Draw rects, and color them by original_index
+              legend.append("rect")
+                  .attr("width", 8)
+                  .attr("height", 8)
+                  .style("fill", function (d) {
+                    return color(d.label)
+                  });
 
+              legend.append("text")
+                  .attr("x", function (d, i) {
+                    return d.depth * 10 + 10;
+                  })
+                  .attr("dy", "0.50em")
+                  .attr("cursor", "pointer")
+                  .on('mouseover', function (d) {
+                    if (d.id) {
+                      d3.select(this).style("fill", "steelblue");
+                    }
+                  })
+                  .on('mouseout', function (d) {
+                    if (d.id) {
+                      d3.select(this).style("fill", "black");
+                    }
+                  })
+                  .on('click', function (d) {
+                    if (d.id) {
+                      window.open('https://glyconnect.expasy.org/browser/proteins/' + d.id, '_blank');
+                    }
+                  })
+                  .text(function (d) {
+                    return d.label;
+                  });
+            }
             bubbles = bubbles.transition()
                 .transition()
                 .duration(400)
@@ -251,21 +222,6 @@
 
             bubbles
                 .transition().duration(1000)
-
-          }
-
-          function bubbledata(data) {
-            //loop through data -- and MERGE children
-            var childs = [];
-            data.forEach( function(element){
-              childs.push(element.children);
-            });
-            var merged = [].concat.apply([], childs); //flatterns multidimensional array
-            var children = {
-              "children": merged
-            };
-
-            return JSON.parse(JSON.stringify(children));// return deep clone
 
           }
         }
